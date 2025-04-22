@@ -20,3 +20,14 @@ export async function createCheqdResource(params: object) {
     { headers: { "x-api-key": `${cheqdConfig.apiKey}` } }
   );
 }
+
+export async function issueCheqdTrustRegistryAccreditation(
+  type: string,
+  params: object
+) {
+  return await axios.post(
+    `${cheqdConfig.apiHost}/trust-registry/accreditation/issue?accreditationType=${type}`,
+    params,
+    { headers: { "x-api-key": `${cheqdConfig.apiKey}` } }
+  );
+}
