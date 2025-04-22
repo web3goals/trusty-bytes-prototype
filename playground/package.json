@@ -1,0 +1,20 @@
+{
+  "name": "playground",
+  "version": "0.1.0",
+  "scripts": {
+    "index": "ts-node ./scripts/index.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.24.0",
+    "dotenv": "^16.4.7",
+    "eslint": "^9.24.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.29.0"
+  },
+  "dependencies": {
+    "axios": "^1.8.4"
+  }
+}
