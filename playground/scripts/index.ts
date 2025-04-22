@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import * as dotenv from "dotenv";
+dotenv.config();
+
 import { cheqdConfig } from "./config/cheqd";
 import {
   createCheqdDid,
   createCheqdResource,
   listCheqdDids,
 } from "./lib/cheqd";
-dotenv.config();
 
 async function listDids() {
   const { data } = await listCheqdDids();
