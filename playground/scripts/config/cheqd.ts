@@ -1,8 +1,14 @@
 const apiHost = "https://studio-api.cheqd.net";
 
 const apiKey = process.env.CHEQD_API_KEY;
+if (!apiKey) {
+  throw new Error("CHEQD_API_KEY is not set in the environment variables.");
+}
 
-const rootDid = process.env.CHEQD_FATHER_DID;
+const rootDid = process.env.CHEQD_ROOT_DID;
+if (!rootDid) {
+  throw new Error("CHEQD_ROOT_DID is not set in the environment variables.");
+}
 
 const verifiableAttestationSchema = {
   $schema: "https://json-schema.org/draft/2020-12/schema",
@@ -273,7 +279,7 @@ const verifiableAccreditationSchema = {
   type: "object",
   allOf: [
     {
-      $ref: "https://resolver.cheqd.net/1.0/identifiers/did:cheqd:testnet:7ebbf88c-4840-4d1e-ab89-84e7e17badda?resourceName=VerifiableAttestation&resourceType=JSONSchemaValidator2020",
+      $ref: `https://resolver.cheqd.net/1.0/identifiers/${rootDid}?resourceName=VerifiableAttestation&resourceType=JSONSchemaValidator2020`,
     },
     {
       properties: {
@@ -362,7 +368,7 @@ const aiAgentAuthorisationSchema = {
   type: "object",
   allOf: [
     {
-      $ref: "https://resolver.cheqd.net/1.0/identifiers/did:cheqd:testnet:7ebbf88c-4840-4d1e-ab89-84e7e17badda?resourceName=VerifiableAttestation&resourceType=JSONSchemaValidator2020",
+      $ref: `https://resolver.cheqd.net/1.0/identifiers/${rootDid}?resourceName=VerifiableAttestation&resourceType=JSONSchemaValidator2020`,
     },
     {
       properties: {
