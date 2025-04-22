@@ -1,4 +1,5 @@
 const apiHost = "https://studio-api.cheqd.net";
+const resolveTrustChainApiHost = "https://dev-train.trust-scheme.de";
 
 const apiKey = process.env.CHEQD_API_KEY;
 if (!apiKey) {
@@ -8,6 +9,11 @@ if (!apiKey) {
 const rootDid = process.env.CHEQD_ROOT_DID;
 if (!rootDid) {
   throw new Error("CHEQD_ROOT_DID is not set in the environment variables.");
+}
+
+const agentDid = process.env.CHEQD_ROOT_DID;
+if (!agentDid) {
+  throw new Error("CHEQD_AGENT_DID is not set in the environment variables.");
 }
 
 const verifiableAttestationSchema = {
@@ -483,8 +489,10 @@ const aiAgentAuthorisationSchema = {
 
 export const cheqdConfig = {
   apiHost,
+  resolveTrustChainApiHost,
   apiKey,
   rootDid,
+  agentDid,
   verifiableAttestationSchema,
   verifiableAccreditationSchema,
   aiAgentAuthorisationSchema,

@@ -31,3 +31,20 @@ export async function issueCheqdTrustRegistryAccreditation(
     { headers: { "x-api-key": `${cheqdConfig.apiKey}` } }
   );
 }
+
+export async function issueCheqdCredential(params: object) {
+  return await axios.post(`${cheqdConfig.apiHost}/credential/issue`, params, {
+    headers: { "x-api-key": `${cheqdConfig.apiKey}` },
+  });
+}
+
+export async function verifyCheqdCredential(params: object) {
+  return await axios.post(`${cheqdConfig.apiHost}/credential/verify`, params);
+}
+
+export async function resolveCheqdTrustChain(params: object) {
+  return await axios.post(
+    `${cheqdConfig.resolveTrustChainApiHost}/tcr/v1/resolve-cheqd`,
+    params
+  );
+}
