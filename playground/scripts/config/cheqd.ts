@@ -487,6 +487,98 @@ const aiAgentAuthorisationSchema = {
   ],
 };
 
+const marketplaceDatasetAccessSchema = {
+  $schema: "https://json-schema.org/draft/2020-12/schema",
+  title: "Marketplace Dataset Access Verifiable Credential Schema",
+  description: "Schema for a Marketplace Dataset Access",
+  type: "object",
+  allOf: [
+    {
+      $ref: `https://resolver.cheqd.net/1.0/identifiers/${rootDid}?resourceName=VerifiableAttestation&resourceType=JSONSchemaValidator2020`,
+    },
+    {
+      properties: {
+        credentialSubject: {
+          type: "object",
+          properties: {
+            id: {
+              type: "string",
+            },
+            sellerAddress: {
+              type: "string",
+            },
+            buyerAddress: {
+              type: "string",
+            },
+            type: {
+              type: "string",
+            },
+            name: {
+              type: "string",
+            },
+            description: {
+              type: "string",
+            },
+            symbol: {
+              type: "string",
+            },
+            source: {
+              type: "string",
+            },
+          },
+          required: [
+            "id",
+            "sellerAddress",
+            "buyerAddress",
+            "type",
+            "name",
+            "description",
+            "symbol",
+            "source",
+          ],
+        },
+        proof: {
+          description: "Contains information about the proof",
+          type: "object",
+          properties: {
+            type: {
+              description: "Defines the proof type",
+              type: "string",
+            },
+            proofPurpose: {
+              description: "Defines the purpose of the proof",
+              type: "string",
+            },
+            created: {
+              description:
+                "Defines the date and time, when the proof has been created",
+              type: "string",
+              format: "date-time",
+            },
+            verificationMethod: {
+              description:
+                "Contains information about the verification method / proof mechanisms",
+              type: "string",
+            },
+            jws: {
+              description: "Defines the proof value in JWS format",
+              type: "string",
+            },
+          },
+          required: [
+            "type",
+            "proofPurpose",
+            "created",
+            "verificationMethod",
+            "jws",
+          ],
+        },
+      },
+      required: ["credentialSubject", "proof"],
+    },
+  ],
+};
+
 export const cheqdConfig = {
   apiHost,
   resolveTrustChainApiHost,
@@ -496,4 +588,5 @@ export const cheqdConfig = {
   verifiableAttestationSchema,
   verifiableAccreditationSchema,
   aiAgentAuthorisationSchema,
+  marketplaceDatasetAccessSchema,
 };
