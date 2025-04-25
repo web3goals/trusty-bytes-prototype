@@ -78,10 +78,6 @@ export function DatasetCard(props: {
         return;
       }
 
-      // Get user's DID or create it if it doesn't exist
-      // TODO:
-      const did = "";
-
       // Use contract to buy the dataset
       const provider = await wallet.getEthereumProvider();
       const publicClient = createPublicClient({
@@ -104,12 +100,10 @@ export function DatasetCard(props: {
       const txHash = await walletClient.writeContract(request);
 
       // Send request to API
-      // TODO: Implement API
       await axios.post("/api/datasets/buy", {
         id: props.dataset._id,
         buyerId: user?.id,
         buyerAddress: user?.wallet?.address,
-        buyerDid: did,
         txHash: txHash,
       });
 
