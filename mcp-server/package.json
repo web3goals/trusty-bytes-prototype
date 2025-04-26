@@ -1,0 +1,29 @@
+{
+  "name": "mcp-server",
+  "scripts": {
+    "server": "ts-node ./scripts/index.ts",
+    "playground": "ts-node ./scripts/playground.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "@eslint/js": "^9.24.0",
+    "@types/express": "^5.0.1",
+    "dotenv": "^16.4.7",
+    "eslint": "^9.24.0",
+    "globals": "^16.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.29.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.8.0",
+    "axios": "^1.8.4",
+    "express": "^5.1.0",
+    "mongodb": "^6.15.0",
+    "uuid": "^11.1.0",
+    "viem": "^2.25.0",
+    "winston": "^3.17.0"
+  }
+}
