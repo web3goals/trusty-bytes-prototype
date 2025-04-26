@@ -7,6 +7,7 @@ import { DatasetType } from "@/types/dataset-type";
 import { usePrivy, useWallets } from "@privy-io/react-auth";
 import axios from "axios";
 import {
+  BadgeCheckIcon,
   BracesIcon,
   CalendarIcon,
   CaseUpperIcon,
@@ -268,6 +269,13 @@ export function DatasetCard(props: {
             <Link href={`/datasets/data/${props.dataset._id}`}>
               <Button variant="outline">
                 <BracesIcon /> Open data
+              </Button>
+            </Link>
+          )}
+          {isUserPurchased && (
+            <Link href={`/datasets/access-credential/${props.dataset._id}`}>
+              <Button variant="outline">
+                <BadgeCheckIcon /> Open access credential
               </Button>
             </Link>
           )}
