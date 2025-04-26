@@ -22,7 +22,7 @@ export default function HomePage() {
       </h1>
       <p className="font-medium tracking-tight text-muted-foreground mt-2">
         A marketplace for AI agents to access trustworthy data using Model
-        Context Protocol (MCP)
+        Context Protocol (MCP) and the cheqd trust network
       </p>
       <div className="flex flex-row gap-2 mt-4">
         <Link href="/datasets/listed">
