@@ -5,7 +5,7 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 import { z } from "zod";
 import { zodToJsonSchema } from "zod-to-json-schema";
-import { getCandles, getDatasets, getSentiment } from "./dataset";
+import { getCandles, getDatasets, getIssuer, getSentiment } from "./dataset";
 
 const GetDatasetsSchema = z.object({});
 
@@ -19,6 +19,15 @@ const GetCandlesSchema = z.object({
 });
 
 const GetSentimentSchema = z.object({
+  symbol: z
+    .string()
+    .describe("Symbol for getting sentiment, e.g. 'eth', 'trump'"),
+  source: z
+    .string()
+    .describe("Source for getting sentiment, e.g. 'x', 'warpcast'"),
+});
+
+const GetDatasetIssuerSchema = z.object({
   symbol: z
     .string()
     .describe("Symbol for getting sentiment, e.g. 'eth', 'trump'"),
@@ -62,6 +71,12 @@ export function createServer(params: {
           description:
             "Get an array of sentiment data (date, positive, negative, neutral, volume) for the specified symbol and source",
           inputSchema: zodToJsonSchema(GetSentimentSchema),
+        },
+        {
+          name: "get_dataset_issuer",
+          description:
+            "Get details about organization (DID, Trust Framework, Trust Framework ID) that issued the specified dataset by symbol and source",
+          inputSchema: zodToJsonSchema(GetDatasetIssuerSchema),
         },
       ],
     };
@@ -138,6 +153,28 @@ export function createServer(params: {
                   : "Data not found, the user probably did not purchase the dataset",
               },
             ],
+          };
+        }
+
+        case "get_dataset_issuer": {
+          const args = GetDatasetIssuerSchema.parse(request.params.arguments);
+          const issuer = await getIssuer(accessToken, args.symbol, args.source);
+          let text;
+          if (!issuer) {
+            text =
+              "Failed to get the organization that issued the dataset, failed to verify the dataset using the cheqd trust network";
+          } else {
+            text = `
+              According to a verification using the ${issuer.trustNetwork} trust network, the dataset was issued by an organization with the following attributes:
+            
+              DID: ${issuer.did}
+              Trust Netwpork: ${issuer.trustNetwork}
+              Trust Framework: ${issuer.trustFramework}
+              Trust Framework ID: ${issuer.trustFrameworkId}
+            `;
+          }
+          return {
+            content: [{ type: "text", text: text }],
           };
         }
 
