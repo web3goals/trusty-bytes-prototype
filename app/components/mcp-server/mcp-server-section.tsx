@@ -47,6 +47,23 @@ export function McpServerSection() {
         },
       ],
     },
+    {
+      name: "get_dataset_issuer",
+      description:
+        "Get details about organization (DID, Trust Framework, Trust Framework ID) that issued the specified dataset by symbol and source",
+      inputs: [
+        {
+          name: "symbol",
+          type: "string",
+          description: "Symbol for getting sentiment, e.g. 'eth', 'trump'",
+        },
+        {
+          name: "source",
+          type: "string",
+          description: "Source for getting sentiment, e.g. 'x', 'warpcast'",
+        },
+      ],
+    },
   ];
 
   const config = {
