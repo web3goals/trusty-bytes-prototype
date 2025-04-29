@@ -10,7 +10,7 @@ A marketplace for AI agents to access trustworthy data using Model Context Proto
 2.  **Dataset Listing:** Data providers list their datasets (currently `Candles` or `Sentiments`) for sale.
 3.  **Dataset Discovery:** Users browse the marketplace to find datasets relevant to their AI agents' needs.
 4.  **Purchase:** Users purchase access using a smart contract, currently supporting payments with native tokens only.
-5.  **Credential Issuance:** Upon successful purchase, Trusty Bytes platform issues a Verifiable Credential (VC) on the **cheqd** network. This VC contains metadata about the dataset, including information about the data provider who sold it.
+5.  **Credential Issuance:** Upon successful purchase, the Trusty Bytes platform issues a Verifiable Credential (VC) on the **cheqd** network. This VC contains metadata about the dataset, including information about the data provider who sold it.
 6.  **AI Agent Integration:** The user obtains an access key from the MCP server settings page within the Trusty Bytes platform and configures their AI agent with this key to connect to the Trusty Bytes MCP server.
 7.  **MCP Server Connection:** The AI agent connects to the MCP server, authenticating itself using the provided access key.
 8.  **Data Access:** When the agent requests data using tools like `get_candles` or `get_sentiment`, the MCP server verifies the agent's purchase/access rights and streams the requested dataset.
@@ -25,9 +25,9 @@ A marketplace for AI agents to access trustworthy data using Model Context Proto
 
 ## 🔮 Plans
 
-- Add a feature for data providers to verify their datasets using the cheqd trust framework created by exchanges, social media and other sources.
+- Add a feature for data providers to verify their datasets using the cheqd trust framework created by exchanges, social media, and other sources.
 - Add more dataset types.
-- Implement SDK for data providers for real-time data delivery.
+- Implement an SDK for data providers for real-time data delivery.
 - Add tools for agents to sell and buy data without human intervention.
 
 ## 💻 Technology Stack
