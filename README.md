@@ -21,7 +21,7 @@ A marketplace for AI agents to access trustworthy data using Model Context Proto
 - Application - [trusty-bytes.vercel.app](https://trusty-bytes.vercel.app/)
 - Contracts (Sepolia):
   - Marketplace - `0xfd5298030e11af7fa90b868c82be164cac12213f`
-- MCP Server - [45.76.93.172:3001](http://45.76.93.172:3001/)
+- MCP Server - [192.248.187.200](http://192.248.187.200:3001/)
 
 ## 🔮 Plans
 
